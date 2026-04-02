@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing & Branding Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0d;
+    --paper: #f5f0e8;
+    --cream: #faf7f2;
+    --accent: #c8401a;
+    --accent2: #1a4d3a;
+    --gold: #c9943a;
+    --muted: #8a8278;
+    --border: #d8d0c4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; letter-spacing: 0.05em;
+    color: var(--ink);
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5rem 4rem 5rem 5rem;
+    position: relative;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'DM Mono', monospace; font-size: 0.75rem;
+    color: var(--accent); letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 2rem;
+  }
+  .hero-tag::before {
+    content: ''; width: 24px; height: 1px; background: var(--accent);
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 900; line-height: 1.05;
+    color: var(--ink); margin-bottom: 1.5rem;
+  }
+  .hero-name span { color: var(--accent); font-style: italic; }
+  .hero-desc {
+    font-size: 1.05rem; line-height: 1.75; color: var(--muted);
+    max-width: 420px; margin-bottom: 3rem;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    background: var(--ink); color: var(--paper);
+    padding: 1rem 2rem; font-size: 0.85rem;
+    font-weight: 600; letter-spacing: 0.05em;
+    text-decoration: none; transition: all 0.3s;
+    text-transform: uppercase;
+  }
+  .hero-cta:hover { background: var(--accent); transform: translateX(4px); }
+  .hero-cta-arrow { font-size: 1.1rem; }
+
+  .hero-right {
+    background: var(--ink);
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; padding: 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute; top: -30%; right: -20%;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,64,26,0.2) 0%, transparent 70%);
+  }
+  .stats-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5px; width: 100%; max-width: 400px;
+    border: 1.5px solid rgba(255,255,255,0.08);
+  }
+  .stat-box {
+    background: rgba(255,255,255,0.03);
+    padding: 2rem 1.5rem;
+    border: 1.5px solid rgba(255,255,255,0.06);
+    position: relative;
+    transition: background 0.3s;
+  }
+  .stat-box:hover { background: rgba(200,64,26,0.1); }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem; font-weight: 900;
+    color: var(--paper); line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-num .unit { font-size: 1rem; color: var(--accent); margin-left: 2px; }
+  .stat-label {
+    font-size: 0.75rem; color: rgba(255,255,255,0.4);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    line-height: 1.4;
+  }
+  .hero-domains {
+    margin-top: 2rem; display: flex; gap: 0.75rem;
+    flex-wrap: wrap; justify-content: center;
+  }
+  .domain-pill {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+    padding: 0.4rem 1rem; font-size: 0.78rem;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 5rem; }
+  .section-header {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+  .section-num {
+    font-family: 'DM Mono', monospace; font-size: 0.75rem;
+    color: var(--accent); letter-spacing: 0.1em;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 700; color: var(--ink);
+  }
+  .section-line {
+    flex: 1; height: 1px; background: var(--border);
+  }
+
+  /* ── SKILLS ── */
+  .skills-section { background: var(--paper); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .skill-card {
+    background: var(--cream); padding: 2.5rem 2rem;
+    border: 1px solid var(--border);
+    transition: all 0.3s; cursor: default;
+    position: relative; overflow: hidden;
+  }
+  .skill-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 3px; background: var(--accent);
+    transition: width 0.4s;
+  }
+  .skill-card:hover::before { width: 100%; }
+  .skill-card:hover { background: white; transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.07); }
+  .skill-icon { font-size: 2rem; margin-bottom: 1.2rem; }
+  .skill-name {
+    font-family: 'Playfair Display', serif; font-size: 1.25rem;
+    font-weight: 700; margin-bottom: 0.75rem; color: var(--ink);
+  }
+  .skill-desc { font-size: 0.9rem; line-height: 1.7; color: var(--muted); }
+  .skill-tags { margin-top: 1.2rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .skill-tag {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem;
+    padding: 0.2rem 0.6rem; border: 1px solid var(--border);
+    color: var(--muted); letter-spacing: 0.05em;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-section { background: var(--cream); }
+  .project-card {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--border);
+    margin-bottom: 2px;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+  }
+  .project-card:hover { box-shadow: 0 8px 40px rgba(0,0,0,0.08); }
+  .project-card.reverse { direction: rtl; }
+  .project-card.reverse > * { direction: ltr; }
+
+  .project-visual {
+    background: var(--ink);
+    padding: 3.5rem;
+    display: flex; flex-direction: column; justify-content: space-between;
+    min-height: 420px; position: relative; overflow: hidden;
+  }
+  .pv-nhago { background: linear-gradient(135deg, #1a2e1a 0%, #0d1a0d 100%); }
+  .pv-jerry { background: linear-gradient(135deg, #1a1a2e 0%, #0d0d1a 100%); }
+  .pv-binh  { background: linear-gradient(135deg, #2e1010 0%, #1a0a0a 100%); }
+
+  .project-tag {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.6); letter-spacing: 0.08em;
+    text-transform: uppercase; width: fit-content;
+  }
+  .project-logo-area { text-align: center; }
+  .project-big-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; font-weight: 900; color: white;
+    line-height: 1.1; margin-bottom: 0.5rem;
+  }
+  .project-sub { font-size: 0.85rem; color: rgba(255,255,255,0.4); letter-spacing: 0.06em; }
+  .project-accent-line {
+    width: 40px; height: 3px; margin: 1rem auto 0;
+  }
+
+  .project-content {
+    background: white;
+    padding: 3.5rem;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .project-category {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem;
+    color: var(--accent); letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 1rem;
+  }
+  .project-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem; font-weight: 700; margin-bottom: 1rem;
+    line-height: 1.25;
+  }
+  .project-desc { font-size: 0.92rem; line-height: 1.75; color: var(--muted); margin-bottom: 2rem; }
+
+  .metrics-row { display: flex; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .metric {
+    flex: 1; min-width: 100px;
+    border-top: 2px solid var(--border); padding-top: 0.75rem;
+  }
+  .metric.highlight { border-top-color: var(--accent); }
+  .metric-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 900; color: var(--ink);
+    line-height: 1;
+  }
+  .metric.highlight .metric-val { color: var(--accent); }
+  .metric-label { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .deliverables { list-style: none; }
+  .deliverables li {
+    font-size: 0.88rem; color: var(--muted); padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .deliverables li::before {
+    content: '→'; color: var(--accent); font-weight: 700; flex-shrink: 0;
+  }
+  .deliverables li:last-child { border-bottom: none; }
+
+  /* ── THINKING ── */
+  .thinking-section { background: var(--ink); }
+  .thinking-section .section-title { color: var(--paper); }
+  .thinking-section .section-line { background: rgba(255,255,255,0.1); }
+  .thinking-section .section-num { color: var(--accent); }
+  .framework-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; }
+  .framework-step {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 2.5rem 2rem; position: relative;
+    transition: background 0.3s;
+  }
+  .framework-step:hover { background: rgba(200,64,26,0.08); }
+  .step-num {
+    font-family: 'DM Mono', monospace; font-size: 3rem;
+    font-weight: 500; color: rgba(255,255,255,0.05);
+    line-height: 1; margin-bottom: 1rem; letter-spacing: -0.02em;
+  }
+  .step-title {
+    font-family: 'Playfair Display', serif; font-size: 1.15rem;
+    font-weight: 700; color: var(--paper); margin-bottom: 0.75rem;
+  }
+  .step-desc { font-size: 0.85rem; line-height: 1.7; color: rgba(255,255,255,0.4); }
+  .step-tools { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.3rem; }
+  .step-tool {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem;
+    color: var(--accent); letter-spacing: 0.06em;
+  }
+
+  /* ── SEO SECTION ── */
+  .seo-section { background: var(--paper); }
+  .seo-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: start; }
+  .seo-left {}
+  .seo-intro { font-size: 1rem; line-height: 1.8; color: var(--muted); margin-bottom: 2.5rem; }
+  .seo-checklist { list-style: none; }
+  .seo-checklist li {
+    display: flex; gap: 1rem; padding: 1.2rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .seo-check {
+    width: 22px; height: 22px; flex-shrink: 0;
+    background: var(--accent2); display: flex; align-items: center;
+    justify-content: center; font-size: 0.7rem; color: white; margin-top: 2px;
+  }
+  .seo-item-title { font-weight: 600; font-size: 0.9rem; color: var(--ink); margin-bottom: 0.25rem; }
+  .seo-item-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+  .seo-right {}
+  .seo-metric-card {
+    background: var(--ink); color: white;
+    padding: 2.5rem; margin-bottom: 1px;
+  }
+  .seo-metric-title {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem;
+    color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .seo-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .seo-row:last-child { border: none; }
+  .seo-row-label { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+  .seo-row-val { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--paper); }
+  .seo-row-val.good { color: #4ade80; }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--accent);
+    padding: 6rem 5rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+  }
+  .contact-left {}
+  .contact-intro {
+    font-family: 'DM Mono', monospace; font-size: 0.75rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.6); margin-bottom: 1.5rem;
+  }
+  .contact-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 900; color: white; line-height: 1.1;
+    margin-bottom: 2rem;
+  }
+  .contact-desc { font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,0.75); }
+  .contact-right {}
+  .contact-info-list { list-style: none; }
+  .contact-info-item {
+    padding: 1.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.15);
+    display: flex; flex-direction: column; gap: 0.25rem;
+  }
+  .contact-info-item:last-child { border: none; }
+  .ci-label { font-size: 0.72rem; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; }
+  .ci-val { font-size: 1.05rem; color: white; font-weight: 500; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); padding: 2rem 5rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif; font-size: 1rem;
+    font-weight: 700; color: rgba(255,255,255,0.5);
+  }
+  .footer-note { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: rgba(255,255,255,0.25); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate { animation: fadeUp 0.8s ease forwards; }
+  .delay-1 { animation-delay: 0.15s; opacity: 0; }
+  .delay-2 { animation-delay: 0.3s; opacity: 0; }
+  .delay-3 { animation-delay: 0.45s; opacity: 0; }
+  .delay-4 { animation-delay: 0.6s; opacity: 0; }
+
+  /* scrolled-in animations */
+  .reveal { opacity: 0; transform: translateY(24px); transition: all 0.7s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero, .project-card, .seo-grid, .contact-section { grid-template-columns: 1fr; }
+    section { padding: 4rem 1.5rem; }
+    .skills-grid, .framework-grid { grid-template-columns: 1fr 1fr; }
+    .hero-left { padding: 3rem 1.5rem; }
+    .hero-right { padding: 3rem 1.5rem; min-height: 400px; }
+    .project-card.reverse { direction: ltr; }
+    footer { flex-direction: column; gap: 0.5rem; padding: 2rem 1.5rem; }
+    .contact-section { padding: 4rem 1.5rem; gap: 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Portfolio · 2025–2026</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Kỹ năng</a></li>
+    <li><a href="#projects">Dự án</a></li>
+    <li><a href="#thinking">Tư duy</a></li>
+    <li><a href="#seo">SEO</a></li>
+    <li><a href="#contact">Liên hệ</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag animate">Freelance Marketing & Branding</div>
+    <h1 class="hero-name animate delay-1">
+      Xây thương<br>hiệu <span>bằng số</span><br>thật.
+    </h1>
+    <p class="hero-desc animate delay-2">
+      Tôi giúp các thương hiệu FnB, FMCG và Service xây dựng định vị rõ ràng,
+      chạy quảng cáo có ROI thực tế, và tăng trưởng tự nhiên qua content & SEO.
+    </p>
+    <a href="#projects" class="hero-cta animate delay-3">
+      Xem dự án <span class="hero-cta-arrow">→</span>
+    </a>
+  </div>
+  <div class="hero-right">
+    <div class="stats-grid animate delay-2">
+      <div class="stat-box">
+        <div class="stat-num">3<span class="unit">+</span></div>
+        <div class="stat-label">Thương hiệu<br>đã triển khai</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">351<span class="unit">M</span></div>
+        <div class="stat-label">Lượt tiếp cận<br>ước tính / campaign</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">17.5<span class="unit">x</span></div>
+        <div class="stat-label">ROAS đạt được<br>(Jerry Studio)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">500<span class="unit">+</span></div>
+        <div class="stat-label">Leads tin nhắn<br>(Nhà Gỗ 1 tháng)</div>
+      </div>
+    </div>
+    <div class="hero-domains animate delay-3">
+      <span class="domain-pill">FnB</span>
+      <span class="domain-pill">FMCG</span>
+      <span class="domain-pill">Service</span>
+      <span class="domain-pill">Event</span>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Kỹ năng cốt lõi</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-icon">🎯</div>
+      <div class="skill-name">Branding & Định vị</div>
+      <div class="skill-desc">Xây dựng USP, thông điệp thương hiệu rõ ràng theo framework 3C – từ nghiên cứu thị trường đến Positioning Statement.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Brand Strategy</span>
+        <span class="skill-tag">3C Framework</span>
+        <span class="skill-tag">POE Channel</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">📱</div>
+      <div class="skill-name">Facebook & Meta Ads</div>
+      <div class="skill-desc">Setup chiến dịch Awareness → Message → Conversion. Tối ưu creative, targeting, A/B test để giảm CPR và tăng ROAS.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Campaign Setup</span>
+        <span class="skill-tag">A/B Testing</span>
+        <span class="skill-tag">Retargeting</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">✍️</div>
+      <div class="skill-name">Content Strategy</div>
+      <div class="skill-desc">Lên kế hoạch nội dung đa kênh – từ copywriting viral trên TikTok/FB đến content dài hạn xây thương hiệu và SEO.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Copywriting</span>
+        <span class="skill-tag">Content Plan</span>
+        <span class="skill-tag">UGC Seeding</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🔍</div>
+      <div class="skill-name">SEO Cơ bản</div>
+      <div class="skill-desc">Nghiên cứu từ khóa, tối ưu On-page SEO, xây dựng cấu trúc nội dung chuẩn Google E-E-A-T, theo dõi ranking.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Keyword Research</span>
+        <span class="skill-tag">On-page SEO</span>
+        <span class="skill-tag">Google Analytics</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">Data & Báo cáo</div>
+      <div class="skill-desc">Đọc và phân tích báo cáo Facebook Ads, GA4. Đưa insight để tối ưu chiến dịch, ra quyết định dựa trên số thực.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Meta Ads Manager</span>
+        <span class="skill-tag">GA4</span>
+        <span class="skill-tag">Reporting</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🎪</div>
+      <div class="skill-name">Event & Activation</div>
+      <div class="skill-desc">Lên kế hoạch truyền thông cho sự kiện lớn – từ communication funnel, media plan, OOH đến đo lường kết quả.</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Media Plan</span>
+        <span class="skill-tag">OOH</span>
+        <span class="skill-tag">PR + KOC</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects-section" id="projects">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Dự án thực tế</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- PROJECT 1: NHÀ GỖ -->
+  <div class="project-card reveal">
+    <div class="project-visual pv-nhago">
+      <div class="project-tag">FnB · Restaurant</div>
+      <div class="project-logo-area">
+        <div class="project-big-name">NHÀ GỖ</div>
+        <div class="project-sub">GRILL & CHILL · THỦ ĐỨC</div>
+        <div class="project-accent-line" style="background:#4ade80;"></div>
+      </div>
+      <div style="color:rgba(255,255,255,0.25);font-size:0.75rem;letter-spacing:0.08em;">APR – MAY 2025</div>
+    </div>
+    <div class="project-content">
+      <div>
+        <div class="project-category">Performance Marketing · Content · FnB</div>
+        <h3 class="project-title">Tăng lượng tin nhắn & nhận biết thương hiệu nhà hàng</h3>
+        <p class="project-desc">
+          Triển khai toàn bộ chiến dịch Facebook Ads trong 30 ngày cho Nhà Gỗ Grill & Chill –
+          nhà hàng phong cách thiên nhiên giữa lòng Thủ Đức. Kết hợp song song 2 mục tiêu:
+          tăng tương tác bài viết (Awareness) và tạo Leads qua tin nhắn trực tiếp (Conversion).
+        </p>
+      </div>
+      <div>
+        <div class="metrics-row">
+          <div class="metric highlight">
+            <div class="metric-val">500+</div>
+            <div class="metric-label">Tin nhắn chuyển đổi</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">480K</div>
+            <div class="metric-label">Lượt hiển thị tổng</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">27K đ</div>
+            <div class="metric-label">Cost/Message trung bình</div>
+          </div>
+        </div>
+        <ul class="deliverables">
+          <li>Setup & quản lý 27 nhóm quảng cáo đa mục tiêu (Engagement + Message)</li>
+          <li>Viết copy & brief hình ảnh cho 8+ angle khác nhau theo sản phẩm/dịp</li>
+          <li>A/B test creative: Promotion vs Storytelling vs Không gian → Storytelling win</li>
+          <li>Tối ưu CPM từ ~55.000đ về ~27.000đ qua các vòng tối ưu</li>
+          <li>Báo cáo kết quả hàng tuần + đề xuất ngân sách chiến dịch tiếp theo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT 2: JERRY STUDIO -->
+  <div class="project-card reverse reveal" style="margin-top:2px;">
+    <div class="project-content">
+      <div>
+        <div class="project-category">Performance Ads · Service · Photography</div>
+        <h3 class="project-title">ROAS 17.5x từ ngân sách 1 triệu đồng</h3>
+        <p class="project-desc">
+          Tư vấn & thiết kế chiến dịch quảng cáo cho Jerry Studio – studio chụp ảnh dịch vụ.
+          Với ngân sách chỉ 1 triệu đồng, chiến dịch đạt doanh thu 17.5 triệu từ 2 nhóm
+          khách hàng mục tiêu được phân tách theo giá trị đơn hàng (500K và 1.5M/khách).
+        </p>
+      </div>
+      <div>
+        <div class="metrics-row">
+          <div class="metric highlight">
+            <div class="metric-val">17.5x</div>
+            <div class="metric-label">ROAS đạt được</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">17.5M đ</div>
+            <div class="metric-label">Doanh thu tạo ra</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">25</div>
+            <div class="metric-label">Khách hàng chốt</div>
+          </div>
+        </div>
+        <ul class="deliverables">
+          <li>Phân tích & phân khúc 2 tệp khách hàng theo giá trị đơn hàng</li>
+          <li>Tính toán ngân sách → CPM → Cost per Mess → Tỷ lệ chốt → ROAS</li>
+          <li>Thiết kế cấu trúc chiến dịch tách biệt theo giá dịch vụ</li>
+          <li>CPM đạt 55.556đ / Reach 18.000 / Cost per message: 20.000đ</li>
+          <li>Tổng reach 6.300 người / Frequency tối ưu không spam</li>
+        </ul>
+      </div>
+    </div>
+    <div class="project-visual pv-jerry">
+      <div class="project-tag">Service · Photography</div>
+      <div class="project-logo-area">
+        <div class="project-big-name">JERRY<br>STUDIO</div>
+        <div class="project-sub">PERFORMANCE ADS</div>
+        <div class="project-accent-line" style="background:#818cf8;"></div>
+      </div>
+      <div style="color:rgba(255,255,255,0.25);font-size:0.75rem;letter-spacing:0.08em;">BUDGET: 1.000.000 VND · ROAS 17.5x</div>
+    </div>
+  </div>
+
+  <!-- PROJECT 3: BÌNH TRƯNG FEST -->
+  <div class="project-card reveal" style="margin-top:2px;">
+    <div class="project-visual pv-binh">
+      <div class="project-tag">Event · Community · Xuân 2026</div>
+      <div class="project-logo-area">
+        <div class="project-big-name">BÌNH<br>TRƯNG<br>FEST</div>
+        <div class="project-sub">XUÂN 2026 · TP.HCM</div>
+        <div class="project-accent-line" style="background:#fbbf24;"></div>
+      </div>
+      <div style="color:rgba(255,255,255,0.25);font-size:0.75rem;letter-spacing:0.08em;">TARGET: 15.000+ ATTENDEES · 351M REACH</div>
+    </div>
+    <div class="project-content">
+      <div>
+        <div class="project-category">Communication Plan · Media Plan · Event</div>
+        <h3 class="project-title">Kế hoạch truyền thông lễ hội 15.000+ khách</h3>
+        <p class="project-desc">
+          Lên toàn bộ communication funnel cho Bình Trưng Fest Xuân 2026 –
+          lễ hội văn hóa địa phương tại Phường Bình Trưng, Global City TP.HCM.
+          Gồm media plan 3 giai đoạn, ước tính ngân sách ~368 triệu và lộ trình
+          phủ sóng 351M+ lượt tiếp cận đa kênh.
+        </p>
+      </div>
+      <div>
+        <div class="metrics-row">
+          <div class="metric highlight">
+            <div class="metric-val">351M+</div>
+            <div class="metric-label">Lượt tiếp cận ước tính</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">15K+</div>
+            <div class="metric-label">Mục tiêu tham dự</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">368M đ</div>
+            <div class="metric-label">Ngân sách media plan</div>
+          </div>
+        </div>
+        <ul class="deliverables">
+          <li>Communication funnel 3 giai đoạn: Trước / Trong / Sau sự kiện</li>
+          <li>Media plan đa kênh: Digital Ads + PR Báo chí + OOH + UGC + KOC</li>
+          <li>Ước tính audience size từ dân số TP.HCM → TA phù hợp → Conversion rate</li>
+          <li>Content calendar: 30 bài báo, TikTok 2 video/ngày, Fanpage seeding</li>
+          <li>KPI framework với chỉ số đo lường cụ thể cho từng kênh</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THINKING / FRAMEWORK -->
+<section class="thinking-section" id="thinking">
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
+    <h2 class="section-title" style="color:var(--paper);">Tư duy làm việc</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="framework-grid">
+    <div class="framework-step reveal">
+      <div class="step-num">01</div>
+      <div class="step-title">Research & Insight</div>
+      <div class="step-desc">Không triển khai khi chưa hiểu thị trường. Phân tích 3C (Company – Competitor – Consumer) để tìm ra insight thật sự.</div>
+      <div class="step-tools">
+        <span class="step-tool">→ 3C Framework</span>
+        <span class="step-tool">→ Segmentation</span>
+        <span class="step-tool">→ Consumer Insight</span>
+      </div>
+    </div>
+    <div class="framework-step reveal">
+      <div class="step-num">02</div>
+      <div class="step-title">Định vị & Thông điệp</div>
+      <div class="step-desc">Xây USP rõ ràng, Positioning Statement cụ thể. Thương hiệu phải có lý do tồn tại trước khi chạy quảng cáo.</div>
+      <div class="step-tools">
+        <span class="step-tool">→ Brand Positioning</span>
+        <span class="step-tool">→ USP Development</span>
+        <span class="step-tool">→ Message Hierarchy</span>
+      </div>
+    </div>
+    <div class="framework-step reveal">
+      <div class="step-num">03</div>
+      <div class="step-title">Triển khai & Đo lường</div>
+      <div class="step-desc">Setup chiến dịch với KPI cụ thể từ đầu. Mọi quyết định tối ưu đều dựa trên số liệu thực tế từ Ads Manager.</div>
+      <div class="step-tools">
+        <span class="step-tool">→ Campaign Setup</span>
+        <span class="step-tool">→ KPI Dashboard</span>
+        <span class="step-tool">→ Weekly Reporting</span>
+      </div>
+    </div>
+    <div class="framework-step reveal">
+      <div class="step-num">04</div>
+      <div class="step-title">Tối ưu & Scale</div>
+      <div class="step-desc">Sau khi tìm được creative/audience win, tăng ngân sách có kiểm soát. Không scale khi chưa có data đủ tin cậy.</div>
+      <div class="step-tools">
+        <span class="step-tool">→ A/B Testing</span>
+        <span class="step-tool">→ Budget Scaling</span>
+        <span class="step-tool">→ Iteration Loop</span>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:3rem;padding:2rem;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);" class="reveal">
+    <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:1rem;">BRANDING FRAMEWORK THAM CHIẾU</div>
+    <div style="display:flex;gap:3rem;flex-wrap:wrap;">
+      <div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.7);font-weight:600;margin-bottom:0.5rem;">Branding in SMEs</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.35);line-height:1.8;">
+          Market Overview → Target Consumer Insight → Product & Brand Positioning → Brand Communication & Activation
+        </div>
+      </div>
+      <div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.7);font-weight:600;margin-bottom:0.5rem;">POE Channel Mix</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.35);line-height:1.8;">
+          Paid (FB/TikTok Ads) · Owned (Fanpage, Website) · Earned (UGC, PR, Word-of-mouth)
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEO -->
+<section class="seo-section" id="seo">
+  <div class="section-header reveal">
+    <span class="section-num">04</span>
+    <h2 class="section-title">SEO Cơ bản</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="seo-grid">
+    <div class="seo-left reveal">
+      <p class="seo-intro">
+        SEO không phải magic – đó là quá trình tối ưu có hệ thống để Google
+        hiểu và tin tưởng nội dung của bạn. Tôi áp dụng SEO cơ bản như một
+        lớp nền cho mọi chiến lược content dài hạn.
+      </p>
+      <ul class="seo-checklist">
+        <li>
+          <div class="seo-check">✓</div>
+          <div>
+            <div class="seo-item-title">Nghiên cứu từ khóa (Keyword Research)</div>
+            <div class="seo-item-desc">Dùng Google Keyword Planner, Ahrefs (cơ bản), Google Search Console để tìm từ khóa có volume và ít cạnh tranh. Phân loại theo intent: Informational / Navigational / Transactional.</div>
+          </div>
+        </li>
+        <li>
+          <div class="seo-check">✓</div>
+          <div>
+            <div class="seo-item-title">Tối ưu On-page</div>
+            <div class="seo-item-desc">Title tag, Meta description, H1–H3 hierarchy, từ khóa trong 100 từ đầu, internal linking, image alt text, URL chuẩn slug.</div>
+          </div>
+        </li>
+        <li>
+          <div class="seo-check">✓</div>
+          <div>
+            <div class="seo-item-title">Content chuẩn E-E-A-T</div>
+            <div class="seo-item-desc">Viết nội dung thể hiện kinh nghiệm, chuyên môn, uy tín – đặc biệt quan trọng với ngành FnB và FMCG. Cấu trúc bài chuẩn theo search intent.</div>
+          </div>
+        </li>
+        <li>
+          <div class="seo-check">✓</div>
+          <div>
+            <div class="seo-item-title">Theo dõi & báo cáo</div>
+            <div class="seo-item-desc">Setup Google Search Console, Google Analytics 4. Theo dõi impressions, CTR, average position hàng tuần. Điều chỉnh content dựa trên dữ liệu.</div>
+          </div>
+        </li>
+        <li>
+          <div class="seo-check">✓</div>
+          <div>
+            <div class="seo-item-title">Local SEO</div>
+            <div class="seo-item-desc">Tối ưu Google Business Profile, review management, local keywords – đặc biệt hiệu quả cho nhà hàng và dịch vụ địa phương như Nhà Gỗ.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="seo-right reveal">
+      <div class="seo-metric-card">
+        <div class="seo-metric-title">Quy trình SEO Content điển hình</div>
+        <div class="seo-row"><span class="seo-row-label">Bước 1</span><span class="seo-row-val">Tìm từ khóa mục tiêu</span></div>
+        <div class="seo-row"><span class="seo-row-label">Bước 2</span><span class="seo-row-val">Phân tích SERP top 10</span></div>
+        <div class="seo-row"><span class="seo-row-label">Bước 3</span><span class="seo-row-val">Lên outline theo intent</span></div>
+        <div class="seo-row"><span class="seo-row-label">Bước 4</span><span class="seo-row-val">Viết nội dung chuẩn E-E-A-T</span></div>
+        <div class="seo-row"><span class="seo-row-label">Bước 5</span><span class="seo-row-val">Tối ưu on-page elements</span></div>
+        <div class="seo-row"><span class="seo-row-label">Bước 6</span><span class="seo-row-val">Submit & theo dõi GSC</span></div>
+      </div>
+      <div class="seo-metric-card" style="margin-top:2px;">
+        <div class="seo-metric-title">Công cụ sử dụng</div>
+        <div class="seo-row"><span class="seo-row-label">Keyword</span><span class="seo-row-val good">Google KP · Ubersuggest</span></div>
+        <div class="seo-row"><span class="seo-row-label">Analytics</span><span class="seo-row-val good">GA4 · Search Console</span></div>
+        <div class="seo-row"><span class="seo-row-label">On-page check</span><span class="seo-row-val good">Yoast · Screaming Frog</span></div>
+        <div class="seo-row"><span class="seo-row-label">Local SEO</span><span class="seo-row-val good">Google Business Profile</span></div>
+        <div class="seo-row"><span class="seo-row-label">Backlink cơ bản</span><span class="seo-row-val">Ahrefs Free · Moz</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="contact-left reveal">
+    <div class="contact-intro">Hợp tác freelance</div>
+    <h2 class="contact-headline">Sẵn sàng cho dự án tiếp theo?</h2>
+    <p class="contact-desc">
+      Tôi nhận các dự án freelance về Branding, Performance Ads và Content Strategy
+      cho thương hiệu FnB, FMCG, Service tại TP.HCM và online.
+      Từng bước rõ ràng, báo cáo minh bạch, kết quả đo được.
+    </p>
+  </div>
+  <div class="contact-right reveal">
+    <ul class="contact-info-list">
+      <li class="contact-info-item">
+        <span class="ci-label">Lĩnh vực nhận dự án</span>
+        <span class="ci-val">FnB · FMCG · Service · Event</span>
+      </li>
+      <li class="contact-info-item">
+        <span class="ci-label">Hình thức</span>
+        <span class="ci-val">Freelance · Part-time · Project-based</span>
+      </li>
+      <li class="contact-info-item">
+        <span class="ci-label">Dịch vụ cung cấp</span>
+        <span class="ci-val">Branding · FB Ads · Content · SEO Cơ bản</span>
+      </li>
+      <li class="contact-info-item">
+        <span class="ci-label">Địa điểm</span>
+        <span class="ci-val">TP. Hồ Chí Minh · Remote OK</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Marketing & Branding Freelancer · 2025–2026</div>
+  <div class="footer-note">FnB · FMCG · Service · Ads · Content · SEO</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('in'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
